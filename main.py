@@ -1,5 +1,7 @@
 import modules.msg as msg
+import modules.screenController as sc
 def main():
+    sc.deleteScreen()
     print(msg.MAIN_MENU)
     option = input("= ")
     match option:
@@ -18,6 +20,7 @@ def main():
             pass
         case _:
             print(msg.VALID_ERROR)
+            sc.pauseScreen()
             return main()
         
 if __name__ =="__main__":
