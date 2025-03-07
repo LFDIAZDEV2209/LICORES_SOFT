@@ -1,19 +1,30 @@
 import os
 
-def validateint(msg:str)->int:
+def validateInt(msg:str)->int:
     try:
-        x=input(msg)
-        return x
+        x = int(input(msg))
     except ValueError:
-        print('ingrese un valor valido')
-        return(validateint)
+        print("ERROR: VALOR INVALIDO")
+        os.system("pause")
+        return validateInt(msg)
+    else:
+        return x
 
 def validatetext(msg):
-    x = input(msg).strip(' ')
-    if x.isalpha():
+    x = input(msg)
+    if all(c.isalpha() or c.isspace() for c in x):
         return x
+    elif x.isdigit():
+        print("ERROR: VALOR INVALIDO")
+        os.system("pause")
+        return validatetext(msg)
+    elif x.isalnum():
+        print("ERROR: VALOR INVALIDO")
+        os.system("pause")
+        return validatetext(msg)
     else:
-        print('ingrese un valor valido')
+        print("ERROR: VALOR INVALIDO")
+        os.system("pause")
         return validatetext(msg)
     
 def validateflot(msg:str)->float:
