@@ -1,4 +1,4 @@
-from modules.utils.config import DB_FILE
+from config import DB_FILE
 import modules.msg as msg
 import modules.validateData as vd
 import modules.screenController as sc
