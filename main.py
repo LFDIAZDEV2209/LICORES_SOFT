@@ -1,7 +1,6 @@
 import modules.msg as msg 
 import modules.screenController as sc
 from modules.controllers import addController, deleteController, editController, searchController, seeController
-
 def main(): 
     sc.limpiar_pantalla() 
     print(msg.MAIN_MENU) 
@@ -17,7 +16,7 @@ def main():
             pass
             return main()
         case "4":
-            pass
+            searchController.searchMenu()
             return main()
         case "5":
             pass
