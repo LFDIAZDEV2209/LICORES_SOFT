@@ -18,7 +18,7 @@ def writeJson(data : Dict)->Dict:
         json.dump(data, cf, indent=4)
 #FUNCION QUE SE ENCARGA DE ACTUALIZAR LA BASE DE DATOS CON LOS VALORES QUE YO CONSIDERE
 def updateJson(data : Dict, path: Optional[List[str]] = None) -> None:
-    currentData = readJson(DB_FILE)
+    currentData = readJson()
 
     if not path:
         currentData.update(data)
@@ -29,10 +29,10 @@ def updateJson(data : Dict, path: Optional[List[str]] = None) -> None:
         if path:
             current.setdefault(path[-1], {}).update(data)
     
-    writeJson(DB_FILE, currentData)
+    writeJson(currentData)
 #FUNCION PARA BORRAR ELEMENTOS DE LA BASE DE DATOS CON LOS VALORES QUE YO CONSIDERE
 def deleteJson(path: List[str])->bool:
-    data = readJson(DB_FILE)
+    data = readJson()
     if not data:
         return False
     
@@ -44,16 +44,16 @@ def deleteJson(path: List[str])->bool:
     
     if path and path[-1] in current:
         del current[path[-1]]
-        writeJson(DB_FILE, data)
+        writeJson(data)
         return True
     return False
 #ME INICIALIZA LA BASE DE DATOS, MAS PARA VALIDACIONES
 def initializeJson(initialStructure:Dict)->None:
     if not os.path.isfile(DB_FILE):
-        writeJson(DB_FILE, initialStructure)
+        writeJson(initialStructure)
     else:
-        currentData = readJson(DB_FILE)
+        currentData = readJson()
         for key, value in initialStructure.items():
             if key not in currentData:
                 currentData[key] = value
-        writeJson(DB_FILE, currentData)
+        writeJson(currentData)
