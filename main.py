@@ -1,5 +1,6 @@
 import modules.msg as msg 
 import modules.screenController as sc
+import modules.controllers.addController as add
 
 def main(): 
     sc.limpiar_pantalla() 
@@ -7,7 +8,8 @@ def main():
     option = input("= ") 
     match option:
         case "1":          
-            pass
+            add.addMenu()
+            return main()
         case "2":
             pass
             return main()
