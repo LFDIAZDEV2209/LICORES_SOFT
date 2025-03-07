@@ -1,9 +1,9 @@
+from modules.utils.config import DB_FILE
 import modules.msg as msg
 import modules.validateData as vd
 import modules.screenController as sc
 import modules.utils.corefiles as cf
 import random
-DB_FILE = "data/dbmain.json"
 
 def addMenu():
     sc.limpiar_pantalla()
@@ -27,7 +27,7 @@ def addMenu():
 
                 }
             }
-            cf.updateJson(DB_FILE, CERVEZA,["Beer"])
+            cf.updateJson(CERVEZA,["Beer"])
             return addMenu()
         case "2":
             sc.limpiar_pantalla()
@@ -46,7 +46,7 @@ def addMenu():
 
                 }
             }
-            cf.updateJson(DB_FILE, VINO,["Vino"])
+            cf.updateJson(VINO,["Vino"])
             return addMenu()
         case "3":
             sc.limpiar_pantalla()
@@ -65,7 +65,7 @@ def addMenu():
 
                 }
             }
-            cf.updateJson(DB_FILE, LICORES,["Liquors"])
+            cf.updateJson(LICORES,["Liquors"])
             return addMenu()
         case "4":
             pass

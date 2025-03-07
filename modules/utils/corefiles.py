@@ -1,23 +1,23 @@
 import os 
 import json
 from typing import Dict, List, Optional
+from config import DB_FILE
 
 
-DB_FILE = "data/dbmain.json"
 
 #FUNCION PARA CARGAR LA BASE DE DATOS SE UTILIZA PARA REALIZAR FUNCIONES Y QUE ME RELACIONE LA INFORMACION CON LA BASE DE DATOS
-def readJson(DB_FILE : str)->Dict:
+def readJson()->Dict:
     try:
         with open(DB_FILE, "r", encoding="utf-8") as cf:
             return json.load(cf)
     except (FileNotFoundError, json.JSONDecodeError):
         return {}
 #FUNCION PARA QUE ME ESCRIBA Y ME MUESTRE LA BASE DE DATOS ES POSIBLE MODIFICAR QUE ESPACIOS PUEDO IMPRIMIR
-def writeJson(DB_FILE : str, data : Dict)->Dict:
+def writeJson(data : Dict)->Dict:
     with open(DB_FILE, "w", encoding="utf-8") as cf:
         json.dump(data, cf, indent=4)
 #FUNCION QUE SE ENCARGA DE ACTUALIZAR LA BASE DE DATOS CON LOS VALORES QUE YO CONSIDERE
-def updateJson(DB_FILE : str, data : Dict, path: Optional[List[str]] = None) -> None:
+def updateJson(data : Dict, path: Optional[List[str]] = None) -> None:
     currentData = readJson(DB_FILE)
 
     if not path:
@@ -31,7 +31,7 @@ def updateJson(DB_FILE : str, data : Dict, path: Optional[List[str]] = None) -> 
     
     writeJson(DB_FILE, currentData)
 #FUNCION PARA BORRAR ELEMENTOS DE LA BASE DE DATOS CON LOS VALORES QUE YO CONSIDERE
-def deleteJson(DB_FILE: str,path: List[str])->bool:
+def deleteJson(path: List[str])->bool:
     data = readJson(DB_FILE)
     if not data:
         return False
@@ -48,7 +48,7 @@ def deleteJson(DB_FILE: str,path: List[str])->bool:
         return True
     return False
 #ME INICIALIZA LA BASE DE DATOS, MAS PARA VALIDACIONES
-def initializeJson(DB_FILE: str, initialStructure:Dict)->None:
+def initializeJson(initialStructure:Dict)->None:
     if not os.path.isfile(DB_FILE):
         writeJson(DB_FILE, initialStructure)
     else:
