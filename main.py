@@ -1,24 +1,22 @@
 import modules.msg as msg 
 import modules.screenController as sc
-import modules.controllers.addController as add
-import modules.controllers.searchController as search
-
+from modules.controllers import addController, deleteController, editController, searchController, seeController
 def main(): 
     sc.limpiar_pantalla() 
     print(msg.MAIN_MENU) 
     option = input("= ") 
     match option:
         case "1":          
-            add.addMenu()
+            addController.addMenu()
             return main()
         case "2":
-            pass
+            deleteController.deleteController()
             return main()
         case "3":
             pass
             return main()
         case "4":
-            search.searchMenu()
+            searchController.searchMenu()
             return main()
         case "5":
             pass
