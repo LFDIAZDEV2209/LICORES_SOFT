@@ -11,7 +11,7 @@ def searchMenu():
     sc.limpiar_pantalla()
     data = cf.readJson()
     print(msg.SEARCH_MENU) 
-    option = input("Escoge una opcion:")
+    option = input("= ")
     match option:
         case "1":
             sc.limpiar_pantalla()

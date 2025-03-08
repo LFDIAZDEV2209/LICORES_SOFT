@@ -22,9 +22,6 @@ def main():
             seeController.seeMenu()
             return main()
         case "6":
-            pass
-            return main()
-        case "8":
             print("Saliendo...")
             pass
         case _:

@@ -12,7 +12,7 @@ def seeMenu():
     sc.limpiar_pantalla()
     data = cf.readJson()
     print(msg.SEE_MENU)
-    option = input("Escoge una opcion:")
+    option = input("= ")
            
     match option:
         case "1":
@@ -112,6 +112,8 @@ def seeMenu():
 
             sc.pausar_pantalla()
             return seeMenu()
+        case "6":
+            pass
         case _:
             print("Esta opcion no esta")
             sc.pausar_pantalla()
