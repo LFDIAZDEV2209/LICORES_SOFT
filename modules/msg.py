@@ -4,8 +4,8 @@ MAIN_MENU="""
 ====================================
     1. 🍺 Agregar producto
     2. ❌ Eliminar producto
-    3. 🔍 Buscar producto
-    4.  ✏️ Editar producto
+    3.  ✏️ Editar producto
+    4. 🔍 Buscar producto
     5. 📄 Ver todos los productos
     6. 🚪 Salir
 ====================================

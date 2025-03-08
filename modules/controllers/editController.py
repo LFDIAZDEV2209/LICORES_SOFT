@@ -16,10 +16,12 @@ def editMenu():
                 sc.limpiar_pantalla()
                 print(msg.EDIT_MENU)
                 data = cf.readJson()  
-                if not data:
+                if not data["Beer"]:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
-                    return
+                    return editMenu()
+                for id, info in data["Beer"].items():
+                    print(f"ID: {id} - Nombre: {info['Nombre']}")
 
                 id_buscado = input("Ingrese el ID del producto que desea editar:")
                 encontrado = False
@@ -27,7 +29,7 @@ def editMenu():
                 producto_encontrado = None
 
                 
-                for categoria in ["Beer"]:
+                for categoria in data:
                     if categoria in data:  
                         if id_buscado in data[categoria]:  
                             producto_encontrado = data[categoria][id_buscado]
@@ -46,10 +48,10 @@ def editMenu():
 
                
                 print("\nIngrese los nuevos datos (deje en blanco para mantener el valor actual):")
-                nuevo_nombre = input(f"Nuevo nombre ({producto_encontrado['Nombre']}): ") or producto_encontrado['Nombre']
-                nuevo_ml = input(f"Nueva cantidad de ml ({producto_encontrado['ml']}): ") or producto_encontrado['ml']
-                nuevo_costo = input(f"Nuevo costo ({producto_encontrado['Costo']}): ") or producto_encontrado['Costo']
-                nuevo_precio_venta = input(f"Nuevo precio de venta ({producto_encontrado['precio de venta']}): ") or producto_encontrado['precio de venta']
+                nuevo_nombre = vd.validatetext(f"Nuevo nombre ({producto_encontrado['Nombre']}): ") or producto_encontrado['Nombre']
+                nuevo_ml = vd.validateInt(f"Nueva cantidad de ml ({producto_encontrado['ml']}): ") or producto_encontrado['ml']
+                nuevo_costo = vd.validateInt(f"Nuevo costo ({producto_encontrado['Costo']}): ") or producto_encontrado['Costo']
+                nuevo_precio_venta = vd.validateInt(f"Nuevo precio de venta ({producto_encontrado['precio de venta']}): ") or producto_encontrado['precio de venta']
 
                 
                 producto_encontrado["Nombre"] = nuevo_nombre
@@ -63,14 +65,17 @@ def editMenu():
 
                 print("\n¡Producto actualizado con éxito!")
                 sc.pausar_pantalla()
+                return editMenu()
         case "2":
                 sc.limpiar_pantalla()
                 print(msg.EDIT_MENU)
                 data = cf.readJson()  
-                if not data:
+                if not data["Vino"]:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
-                    return
+                    return editMenu()
+                for id, info in data["Vino"].items():
+                    print(f"ID: {id} - Nombre: {info['Nombre']}")
 
                 id_buscado = input("Ingrese el ID del producto que desea editar:")
                 encontrado = False
@@ -78,7 +83,7 @@ def editMenu():
                 producto_encontrado = None
 
                 
-                for categoria in ["Vino"]:
+                for categoria in data:
                     if categoria in data:  
                         if id_buscado in data[categoria]:  
                             producto_encontrado = data[categoria][id_buscado]
@@ -97,10 +102,11 @@ def editMenu():
 
                
                 print("\nIngrese los nuevos datos (deje en blanco para mantener el valor actual):")
-                nuevo_nombre = input(f"Nuevo nombre ({producto_encontrado['Nombre']}): ") or producto_encontrado['Nombre']
-                nuevo_ml = input(f"Nueva cantidad de ml ({producto_encontrado['ml']}): ") or producto_encontrado['ml']
-                nuevo_costo = input(f"Nuevo costo ({producto_encontrado['Costo']}): ") or producto_encontrado['Costo']
-                nuevo_precio_venta = input(f"Nuevo precio de venta ({producto_encontrado['precio de venta']}): ") or producto_encontrado['precio de venta']
+                nuevo_nombre = vd.validatetext(f"Nuevo nombre ({producto_encontrado['Nombre']}): ") or producto_encontrado['Nombre']
+                nuevo_ml = vd.validateInt(f"Nueva cantidad de ml ({producto_encontrado['ml']}): ") or producto_encontrado['ml']
+                nuevo_costo = vd.validateInt(f"Nuevo costo ({producto_encontrado['Costo']}): ") or producto_encontrado['Costo']
+                nuevo_precio_venta = vd.validateInt(f"Nuevo precio de venta ({producto_encontrado['precio de venta']}): ") or producto_encontrado['precio de venta']
+
 
                 
                 producto_encontrado["Nombre"] = nuevo_nombre
@@ -114,14 +120,17 @@ def editMenu():
 
                 print("\n¡Producto actualizado con éxito!")
                 sc.pausar_pantalla()
+                return editMenu()
         case "3":
                 sc.limpiar_pantalla()
                 print(msg.EDIT_MENU)
                 data = cf.readJson()  
-                if not data:
+                if not data["Liquors"]:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
-                    return
+                    return editMenu()
+                for id, info in data["Liquors"].items():
+                    print(f"ID: {id} - Nombre: {info['Nombre']}")
 
                 id_buscado = input("Ingrese el ID del producto que desea editar:")
                 encontrado = False
@@ -129,7 +138,7 @@ def editMenu():
                 producto_encontrado = None
 
                 
-                for categoria in ["Liquors"]:
+                for categoria in data:
                     if categoria in data:  
                         if id_buscado in data[categoria]:  
                             producto_encontrado = data[categoria][id_buscado]
@@ -148,10 +157,11 @@ def editMenu():
 
                
                 print("\nIngrese los nuevos datos (deje en blanco para mantener el valor actual):")
-                nuevo_nombre = input(f"Nuevo nombre ({producto_encontrado['Nombre']}): ") or producto_encontrado['Nombre']
-                nuevo_ml = input(f"Nueva cantidad de ml ({producto_encontrado['ml']}): ") or producto_encontrado['ml']
-                nuevo_costo = input(f"Nuevo costo ({producto_encontrado['Costo']}): ") or producto_encontrado['Costo']
-                nuevo_precio_venta = input(f"Nuevo precio de venta ({producto_encontrado['precio de venta']}): ") or producto_encontrado['precio de venta']
+                nuevo_nombre = vd.validatetext(f"Nuevo nombre ({producto_encontrado['Nombre']}): ") or producto_encontrado['Nombre']
+                nuevo_ml = vd.validateInt(f"Nueva cantidad de ml ({producto_encontrado['ml']}): ") or producto_encontrado['ml']
+                nuevo_costo = vd.validateInt(f"Nuevo costo ({producto_encontrado['Costo']}): ") or producto_encontrado['Costo']
+                nuevo_precio_venta = vd.validateInt(f"Nuevo precio de venta ({producto_encontrado['precio de venta']}): ") or producto_encontrado['precio de venta']
+
 
                 
                 producto_encontrado["Nombre"] = nuevo_nombre
@@ -165,6 +175,7 @@ def editMenu():
 
                 print("\n¡Producto actualizado con éxito!")
                 sc.pausar_pantalla()
+                return editMenu()
         case "4":
             pass
         case _:
