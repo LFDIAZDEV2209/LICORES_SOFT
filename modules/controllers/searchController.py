@@ -20,6 +20,10 @@ def searchMenu():
                 print("No hay datos para buscar.")
                 sc.pausar_pantalla()
                 return searchMenu()
+            if not data["Beer"]:
+                print("No hay datos para buscar.")
+                sc.pausar_pantalla()
+                return searchMenu()
 
             id_buscado = input("Ingrese el ID del producto que desea buscar:")
             encontrado = False
@@ -45,6 +49,10 @@ def searchMenu():
                 print("No hay datos para buscar.")
                 sc.pausar_pantalla()
                 return searchMenu()
+            if not data["Vino"]:
+                print("No hay datos para buscar.")
+                sc.pausar_pantalla()
+                return searchMenu()
 
             id_buscado = input("Ingrese el ID del producto que desea buscar:")
             encontrado = False
@@ -66,6 +74,10 @@ def searchMenu():
             sc.limpiar_pantalla()
             data = cf.readJson()  
             if not data:
+                print("No hay datos para buscar.")
+                sc.pausar_pantalla()
+                return searchMenu()
+            if not data["Liquors"]:
                 print("No hay datos para buscar.")
                 sc.pausar_pantalla()
                 return searchMenu()
