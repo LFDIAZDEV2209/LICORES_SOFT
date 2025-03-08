@@ -16,6 +16,10 @@ def editMenu():
                 sc.limpiar_pantalla()
                 print(msg.EDIT_MENU)
                 data = cf.readJson()  
+                if not data:
+                    print("No hay datos para editar.")
+                    sc.pausar_pantalla()
+                    return editMenu()
                 if not data["Beer"]:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
@@ -70,6 +74,10 @@ def editMenu():
                 sc.limpiar_pantalla()
                 print(msg.EDIT_MENU)
                 data = cf.readJson()  
+                if not data:
+                    print("No hay datos para editar.")
+                    sc.pausar_pantalla()
+                    return editMenu()
                 if not data["Vino"]:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
@@ -125,6 +133,10 @@ def editMenu():
                 sc.limpiar_pantalla()
                 print(msg.EDIT_MENU)
                 data = cf.readJson()  
+                if not data:
+                    print("No hay datos para editar.")
+                    sc.pausar_pantalla()
+                    return editMenu()
                 if not data["Liquors"]:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()

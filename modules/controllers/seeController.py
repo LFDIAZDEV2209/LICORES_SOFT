@@ -20,7 +20,7 @@ def seeMenu():
             if not data:
                 print("No hay productos para mostrar.")
                 sc.pausar_pantalla()
-                return
+                return seeMenu()
 
             print("=== TODOS LOS PRODUCTOS ===")
             for categoria, productos in data.items():
@@ -34,7 +34,7 @@ def seeMenu():
             if not data:
                 print("No hay datos para mostrar.")
                 sc.pausar_pantalla()
-                return
+                return seeMenu()
             todos_los_productos = []
             for categoria, productos in data.items():
                 for id_producto, detalles in productos.items():
@@ -73,7 +73,7 @@ def seeMenu():
             sc.pausar_pantalla()
             return seeMenu()
         case "4":
-            
+            sc.limpiar_pantalla()
             data = cf.readJson()  
             if not data:
                 print("No hay datos para mostrar.")
