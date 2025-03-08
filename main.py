@@ -13,13 +13,13 @@ def main():
             deleteController.deleteController()
             return main()
         case "3":
-            pass
+            editController.editMenu()
             return main()
         case "4":
             searchController.searchMenu()
             return main()
         case "5":
-            pass
+            seeController.seeMenu()
             return main()
         case "6":
             pass
