@@ -12,7 +12,7 @@ def seeMenu():
     sc.limpiar_pantalla()
     data = cf.readJson()
     print(msg.SEE_MENU)
-    option = input("Escoge una opcion:")
+    option = input("= ")
            
     match option:
         case "1":
@@ -20,7 +20,11 @@ def seeMenu():
             if not data:
                 print("No hay productos para mostrar.")
                 sc.pausar_pantalla()
-                return
+                return seeMenu()
+            if (not data["Beer"])or(not data["Vino"]) or (not data["Liquors"]):
+                print("No hay productos para mostrar.")
+                sc.pausar_pantalla()
+                return seeMenu()
 
             print("=== TODOS LOS PRODUCTOS ===")
             for categoria, productos in data.items():
@@ -34,7 +38,12 @@ def seeMenu():
             if not data:
                 print("No hay datos para mostrar.")
                 sc.pausar_pantalla()
-                return
+                return seeMenu()
+            if (not data["Beer"])or(not data["Vino"]) or (not data["Liquors"]):
+                print("No hay productos para mostrar.")
+                sc.pausar_pantalla()
+                return seeMenu()
+
             todos_los_productos = []
             for categoria, productos in data.items():
                 for id_producto, detalles in productos.items():
@@ -50,10 +59,15 @@ def seeMenu():
                 print(f"\nID: {producto['ID']} | Categoría: {producto['Categoria']}")
                 print(json.dumps({k: v for k, v in producto.items() if k not in ["ID", "Categoria"]}, indent=4))
             sc.pausar_pantalla()
+            return seeMenu()
         case "3":
             sc.limpiar_pantalla()
             data = cf.readJson()  
             if not data:
+                print("No hay datos para mostrar.")
+                sc.pausar_pantalla()
+                return seeMenu()
+            if not data["Beer"]:
                 print("No hay datos para mostrar.")
                 sc.pausar_pantalla()
                 return seeMenu()
@@ -73,9 +87,13 @@ def seeMenu():
             sc.pausar_pantalla()
             return seeMenu()
         case "4":
-            
+            sc.limpiar_pantalla()
             data = cf.readJson()  
             if not data:
+                print("No hay datos para mostrar.")
+                sc.pausar_pantalla()
+                return seeMenu()
+            if not data["Vino"]:
                 print("No hay datos para mostrar.")
                 sc.pausar_pantalla()
                 return seeMenu()
@@ -99,6 +117,10 @@ def seeMenu():
                 print("No hay datos para mostrar.")
                 sc.pausar_pantalla()
                 return seeMenu()
+            if not data["Liquors"]:
+                print("No hay datos para mostrar.")
+                sc.pausar_pantalla()
+                return seeMenu()
             for categoria in ["Liquors"]:
                 if categoria in data:  
                     print(f"Producto encontrado en la categoría {categoria}:")
@@ -112,6 +134,8 @@ def seeMenu():
 
             sc.pausar_pantalla()
             return seeMenu()
+        case "6":
+            pass
         case _:
             print("Esta opcion no esta")
             sc.pausar_pantalla()

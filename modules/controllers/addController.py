@@ -8,7 +8,7 @@ import random
 def addMenu():
     sc.limpiar_pantalla()
     print(msg.ADD_MENU)
-    option = input("Escoja una opcion:")
+    option = input("= ")
     match option:
         case "1":
             sc.limpiar_pantalla()

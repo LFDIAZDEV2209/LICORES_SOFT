@@ -11,7 +11,7 @@ def searchMenu():
     sc.limpiar_pantalla()
     data = cf.readJson()
     print(msg.SEARCH_MENU) 
-    option = input("Escoge una opcion:")
+    option = input("= ")
     match option:
         case "1":
             sc.limpiar_pantalla()
@@ -20,23 +20,31 @@ def searchMenu():
                 print("No hay datos para buscar.")
                 sc.pausar_pantalla()
                 return searchMenu()
+            if not data["Beer"]:
+                print("No hay datos para buscar.")
+                sc.pausar_pantalla()
+                return searchMenu()
 
-            id_buscado = input("Ingrese el ID del producto que desea buscar:")
-            encontrado = False
-            for categoria in ["Beer"]:
-                if categoria in data:  
-                    for id_producto, detalles in data[categoria].items():
-                        if id_buscado == id_producto:
-                            print(f"Producto encontrado en la categoría {categoria}:")
+            filtro = input("Ingrese el nombre o parte del nombre del producto: ").strip().lower()
+
+            encontrado = False  
+            print(f"Productos encontrados con el filtro {filtro}:")
+            for id_producto, detalles in data["Beer"].items():
+                
+                nombre_producto = detalles.get("Nombre", "").lower()
+                if filtro in nombre_producto:
+                            
+                            
                             print(json.dumps(detalles, indent=4))
                             encontrado = True
-                            break
+                            
 
             if not encontrado:
-                print(f"No se encontró ningún producto con el ID {id_buscado}.")
+                print(f"No se encontró ningún producto con el filtro {filtro}.")
 
             sc.pausar_pantalla()
             return searchMenu()
+
             
         case "2":
             sc.limpiar_pantalla()
@@ -45,20 +53,25 @@ def searchMenu():
                 print("No hay datos para buscar.")
                 sc.pausar_pantalla()
                 return searchMenu()
+            if not data["Vino"]:
+                print("No hay datos para buscar.")
+                sc.pausar_pantalla()
+                return searchMenu()
 
-            id_buscado = input("Ingrese el ID del producto que desea buscar:")
-            encontrado = False
-            for categoria in ["Vino"]:
-                if categoria in data:  
-                    for id_producto, detalles in data[categoria].items():
-                        if id_buscado == id_producto:
-                            print(f"Producto encontrado en la categoría {categoria}:")
+            filtro = input("Ingrese el nombre o parte del nombre del producto: ").strip().lower()
+
+            encontrado = False  
+            print(f"Productos encontrados con el filtro {filtro}:")
+            for id_producto, detalles in data["Vino"].items():
+                        nombre_producto = detalles.get("Nombre", "").lower()
+                        if filtro in nombre_producto:
+                            
                             print(json.dumps(detalles, indent=4))
                             encontrado = True
-                            break
+                            
 
             if not encontrado:
-                print(f"No se encontró ningún producto con el ID {id_buscado}.")
+                print(f"No se encontró ningún producto con el filtro {filtro}.")
 
             sc.pausar_pantalla()
             return searchMenu()
@@ -69,20 +82,24 @@ def searchMenu():
                 print("No hay datos para buscar.")
                 sc.pausar_pantalla()
                 return searchMenu()
+            if not data["Liquors"]:
+                print("No hay datos para buscar.")
+                sc.pausar_pantalla()
+                return searchMenu()
 
-            id_buscado = input("Ingrese el ID del producto que desea buscar:")
-            encontrado = False
-            for categoria in ["Liquors"]:
-                if categoria in data:  
-                    for id_producto, detalles in data[categoria].items():
-                        if id_buscado == id_producto:
-                            print(f"Producto encontrado en la categoría {categoria}:")
+            filtro = input("Ingrese el nombre o parte del nombre del producto: ").strip().lower()
+            encontrado = False  
+            print(f"Productos encontrados con el filtro {filtro}:")
+            for id_producto, detalles in data["Liquors"].items():
+                        nombre_producto = detalles.get("Nombre", "").lower()
+                        if filtro in nombre_producto:
+                            
                             print(json.dumps(detalles, indent=4))
                             encontrado = True
-                            break
+                            
 
             if not encontrado:
-                print(f"No se encontró ningún producto con el ID {id_buscado}.")
+                print(f"No se encontró ningún producto con el filtro {filtro}.")
 
             sc.pausar_pantalla()
             return searchMenu()
