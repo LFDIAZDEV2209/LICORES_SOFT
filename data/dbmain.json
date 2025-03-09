@@ -1,0 +1,46 @@
+{
+    "Beer": {
+        "8957": {
+            "Name": "dsgdsgdsg",
+            "ml": 234234,
+            "Cost": 234213,
+            "Price": 1234
+        },
+        "5012": {
+            "Name": "dsg",
+            "ml": 23,
+            "Cost": 213,
+            "Price": 12
+        },
+        "7414": {
+            "Name": "fgdgfegrr",
+            "ml": 234,
+            "Cost": 312,
+            "Price": 123
+        },
+        "4283": {
+            "Name": "dsfgds",
+            "ml": 345345,
+            "Cost": 345,
+            "Price": 235
+        },
+        "6912": {
+            "Name": "dgvef",
+            "ml": 1234,
+            "Cost": 1423,
+            "Price": 1243
+        },
+        "2979": {
+            "Name": "sdfsf",
+            "ml": 3242,
+            "Cost": 234,
+            "Price": 234
+        },
+        "5739": {
+            "Name": "dfgdfg",
+            "ml": 3456345,
+            "Cost": 345,
+            "Price": 345
+        }
+    }
+}

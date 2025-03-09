@@ -2,6 +2,7 @@ import os
 import json
 from typing import Dict, List, Optional
 from config import DB_FILE
+from tabulate import tabulate
 
 
 
@@ -57,3 +58,12 @@ def initializeJson(initialStructure:Dict)->None:
             if key not in currentData:
                 currentData[key] = value
         writeJson(currentData)
+
+def printTable(category: str, product: Dict, product_id: int) -> None:
+    # Mostramos la tabla solo con el producto recién agregado
+    table = [[product_id, product[product_id].get("Name", "N/A"), product[product_id].get("ml", "N/A"), 
+              product[product_id].get("Cost", "N/A"), product[product_id].get("Price", "N/A")]]
+    headers = ["ID", "Name", "ml", "Cost", "Price"]
+    
+    print(f"\n📋 ÚLTIMA MODIFICACIÓN EN {category.upper()}:")
+    print(tabulate(table, headers=headers, tablefmt="grid"))

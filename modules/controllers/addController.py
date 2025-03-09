@@ -13,59 +13,75 @@ def addMenu():
         case "1":
             sc.limpiar_pantalla()
             idBeer = random.randint(1023, 9876)
-            nomBeer = vd.validatetext("Ingrese el nombre de la cerveza🍺:")
-            ml= vd.validateInt("Ingrese la caltida de mililitros de la cerveza🍺:")
-            costBeer = vd.validateInt("Costo de la cerveza🍺:")
-            priceBeer = vd.validateInt("Precio de venta de la cerveza🍺:")
+            nomBeer = vd.validatetext("Ingrese el nombre de la cerveza: ")
+            ml= vd.validateInt("Ingrese los ml: ")
+            costBeer = vd.validateInt("Costo: ")
+            priceBeer = vd.validateInt("Precio de venta: ")
 
             CERVEZA = {
                 idBeer:{
-                "Nombre":nomBeer,
+                "Name":nomBeer,
                 "ml":ml,
-                "Costo":costBeer,
-                "precio de venta":priceBeer
+                "Cost":costBeer,
+                "Price":priceBeer
 
                 }
             }
-            cf.updateJson(CERVEZA,["Beer"])
+            if not cf.updateJson(CERVEZA,["Beer"]):
+                print("Cerveza agregada exitosamente ✅")
+                cf.printTable("Beer", CERVEZA, idBeer)
+            else:
+                print("No se pudo agregar la cerveza ❌ ")
+
+            sc.pausar_pantalla()
             return addMenu()
         case "2":
             sc.limpiar_pantalla()
             idVino = random.randint(1023, 9876)
-            nomVino = vd.validatetext("Ingrese el nombre del vino🍷:")
-            mlVino= vd.validateInt("Ingrese la caltida de mililitros del vino🍷:")
-            costVino = vd.validateInt("Costo del vino🍷:")
-            priceVino = vd.validateInt("Precio de venta del vino🍷:")
+            nomVino = vd.validatetext("Ingrese el nombre del vino: ")
+            mlVino= vd.validateInt("Ingrese los ml: ")
+            costVino = vd.validateInt("Costo: ")
+            priceVino = vd.validateInt("Precio de venta: ")
 
             VINO= {
                 idVino:{
-                "Nombre":nomVino,
+                "Name":nomVino,
                 "ml":mlVino,
-                "Costo":costVino,
-                "precio de venta":priceVino
+                "Cost":costVino,
+                "Price":priceVino
 
                 }
             }
-            cf.updateJson(VINO,["Vino"])
+            if not cf.updateJson(VINO,["Wine"]):
+                print("Vino agregado exitosamente ✅")
+                cf.printTable("Wine", VINO, idVino)
+            else:
+                print("No se pudo agregar el vino ❌")
+            sc.pausar_pantalla()
             return addMenu()
         case "3":
             sc.limpiar_pantalla()
             idLiquors = random.randint(1023, 9876)
-            nomLiquors = vd.validatetext("Ingrese el nombre del licor🥃:")
-            mlLiquors= vd.validateInt("Ingrese la caltida de mililitros del licor🥃:")
-            costLiquors = vd.validateInt("Costo del licor🥃:")
-            priceLiquors = vd.validateInt("Precio de venta del licor🥃:")
+            nomLiquors = vd.validatetext("Ingrese el nombre del licor: ")
+            mlLiquors= vd.validateInt("Ingrese los ml: ")
+            costLiquors = vd.validateInt("Costo: ")
+            priceLiquors = vd.validateInt("Precio de venta: ")
 
             LICORES = {
                 idLiquors:{
-                "Nombre":nomLiquors,
+                "Name":nomLiquors,
                 "ml":mlLiquors,
-                "Costo":costLiquors,
-                "precio de venta":priceLiquors
+                "Cost":costLiquors,
+                "Price":priceLiquors
 
                 }
             }
-            cf.updateJson(LICORES,["Liquors"])
+            if not cf.updateJson(LICORES,["Liquors"]):
+                print("Licor agregado exitosamente ✅")
+                cf.printTable("Liquors", LICORES, idLiquors)
+            else:
+                print("No se pudo agregar el licor ❌")
+            sc.pausar_pantalla()
             return addMenu()
         case "4":
             pass
