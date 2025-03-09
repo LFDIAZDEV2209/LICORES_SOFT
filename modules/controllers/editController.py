@@ -103,13 +103,13 @@ def editMenu():
                     }
 
                     if not cf.updateJson(WINE, ["Wine"]):
-                        print("Cerveza editada exitosamente ✅")
+                        print("Vino editado exitosamente ✅")
                         cf.printTable("Wine", WINE, id)
                     else:
-                        print("No se pudo editar la cerveza ❌")
+                        print("No se pudo editar el vino ❌")
 
                     while True:
-                        opcion = input("\n¿Desea editar otra cerveza? (si/no): ").strip().lower()
+                        opcion = input("\n¿Desea editar otro vino? (si/no): ").strip().lower()
                         if opcion == "si":
                             break  
                         elif opcion == "no":
@@ -119,7 +119,7 @@ def editMenu():
                             print("⚠️ Respuesta inválida. Por favor, ingrese 'si' o 'no'.")
 
                 else:
-                    print(f"⚠️ No se encontró una cerveza con el ID '{id}'.")
+                    print(f"⚠️ No se encontró un vino con el ID '{id}'.")
                     sc.pausar_pantalla()
                     return editMenu()
         case "3":
@@ -158,13 +158,13 @@ def editMenu():
                     }
 
                     if not cf.updateJson(LIQUORS, ["Liquors"]):
-                        print("Cerveza editada exitosamente ✅")
+                        print("Licor editado exitosamente ✅")
                         cf.printTable("Liquors", LIQUORS, id)
                     else:
-                        print("No se pudo editar la cerveza ❌")
+                        print("No se pudo editar el licor ❌")
 
                     while True:
-                        opcion = input("\n¿Desea editar otra cerveza? (si/no): ").strip().lower()
+                        opcion = input("\n¿Desea editar otro licor? (si/no): ").strip().lower()
                         if opcion == "si":
                             break  
                         elif opcion == "no":
@@ -174,7 +174,7 @@ def editMenu():
                             print("⚠️ Respuesta inválida. Por favor, ingrese 'si' o 'no'.")
 
                 else:
-                    print(f"⚠️ No se encontró una cerveza con el ID '{id}'.")
+                    print(f"⚠️ No se encontró un licor con el ID '{id}'.")
                     sc.pausar_pantalla()
                     return editMenu()
         case "4":
