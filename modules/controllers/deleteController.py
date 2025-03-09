@@ -13,8 +13,8 @@ def deleteController():
 
     match option:
         case "1":
-            if "Beer" not in data or not data["Beer"]:
-                print("NO HAY CERVEZAS PARA ELIMINAR")
+            if not data.get("Beer") or not data:
+                print("No hay datos para eliminar.")
                 sc.pausar_pantalla()
                 return deleteController()
             
@@ -35,10 +35,10 @@ def deleteController():
             sc.pausar_pantalla()
             return deleteController()
         case "2":
-            if "Vino" not in data or not data["Vino"]:
-                print("NO HAY VINOS PARA ELIMINAR")
-                sc.pausar_pantalla()
-                return deleteController()
+            if not data.get("Wine") or not data:
+                    print("No hay datos para eliminar.")
+                    sc.pausar_pantalla()
+                    return deleteController()
             
             print("\n🍷 VINOS DISPONIBLES:")
             for id, info in data["Vino"].items():
@@ -57,10 +57,10 @@ def deleteController():
             sc.pausar_pantalla()
             return deleteController()
         case "3":
-            if "Liquors" not in data or not data["Liquors"]:
-                print("NO HAY LICORES PARA ELIMINAR")
-                sc.pausar_pantalla()
-                return deleteController()
+            if not data.get("Liquors") or not data:
+                    print("No hay datos para eliminar.")
+                    sc.pausar_pantalla()
+                    return deleteController()
             
             print("\n🥃 LICORES DISPONIBLES:")
             for id, info in data["Liquors"].items():
