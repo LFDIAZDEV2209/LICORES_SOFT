@@ -20,7 +20,7 @@ def deleteController():
             
             print("\n🍺 CERVEZAS DISPONIBLES:")
             for id, info in data["Beer"].items():
-                print(f"ID: {id} - Nombre: {info['Nombre']}")
+                print(f"ID: {id} - Nombre: {info['Name']}")
             
             id = input("Ingrese el ID de la cerveza a eliminar: ")
 
@@ -42,7 +42,7 @@ def deleteController():
             
             print("\n🍷 VINOS DISPONIBLES:")
             for id, info in data["Vino"].items():
-                print(f"ID: {id} - Nombre: {info['Nombre']}")
+                print(f"ID: {id} - Nombre: {info['Name']}")
             
             id = input("Ingrese el ID del vino a eliminar: ")
             
@@ -64,7 +64,7 @@ def deleteController():
             
             print("\n🥃 LICORES DISPONIBLES:")
             for id, info in data["Liquors"].items():
-                print(f"ID: {id} - Nombre: {info['Nombre']}")
+                print(f"ID: {id} - Nombre: {info['Name']}")
             
             id = input("Ingrese el ID del licor a eliminar: ")
 

@@ -84,7 +84,7 @@ def editMenu():
                     wine_actual = data["Wine"][str(id)] 
                     print("\n🔹 Presiona ENTER para mantener el valor actual.")
 
-                    nomWine = input(f"Ingrese el nuevo nombre de la cerveza ({wine_actual['Name']}): ").strip() or wine_actual["Name"]
+                    nomWine = input(f"Ingrese el nuevo nombre del vino ({wine_actual['Name']}): ").strip() or wine_actual["Name"]
                     ml = input(f"Ingrese los nuevos ml ({wine_actual['ml']}): ").strip()
                     costWine = input(f"Nuevo costo ({wine_actual['Cost']}): ").strip()
                     priceWine = input(f"Nuevo precio de venta ({wine_actual['Price']}): ").strip()
@@ -139,7 +139,7 @@ def editMenu():
                     liquor_actual = data["Liquors"][str(id)] 
                     print("\n🔹 Presiona ENTER para mantener el valor actual.")
 
-                    nomLiquors = input(f"Ingrese el nuevo nombre de la cerveza ({liquor_actual['Name']}): ").strip() or liquor_actual["Name"]
+                    nomLiquors = input(f"Ingrese el nuevo nombre del licor ({liquor_actual['Name']}): ").strip() or liquor_actual["Name"]
                     ml = input(f"Ingrese los nuevos ml ({liquor_actual['ml']}): ").strip()
                     costLiquors = input(f"Nuevo costo ({liquor_actual['Cost']}): ").strip()
                     priceLiquors = input(f"Nuevo precio de venta ({liquor_actual['Price']}): ").strip()
