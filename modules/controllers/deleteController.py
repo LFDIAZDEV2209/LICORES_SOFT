@@ -41,13 +41,13 @@ def deleteController():
                     return deleteController()
             
             print("\n🍷 VINOS DISPONIBLES:")
-            for id, info in data["Vino"].items():
+            for id, info in data["Wine"].items():
                 print(f"ID: {id} - Nombre: {info['Name']}")
             
             id = input("Ingrese el ID del vino a eliminar: ")
             
-            if str(id) in data["Vino"]:
-                if cf.deleteJson(["Vino", str(id)]):
+            if str(id) in data["Wine"]:
+                if cf.deleteJson(["Wine", str(id)]):
                     print("🍷 Vino eliminado exitosamente.")
                 else:
                     print("❌ No se pudo eliminar el vino.")
