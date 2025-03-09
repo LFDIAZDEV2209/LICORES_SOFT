@@ -25,7 +25,7 @@ def editMenu():
                     sc.pausar_pantalla()
                     return editMenu()
                 for id, info in data["Beer"].items():
-                    print(f"ID: {id} - Nombre: {info['Nombre']}")
+                    print(f"ID: {id} - Nombre: {info['Name']}")
 
                 id_buscado = input("Ingrese el ID del producto que desea editar:")
                 encontrado = False
@@ -52,16 +52,16 @@ def editMenu():
 
                
                 print("\nIngrese los nuevos datos (deje en blanco para mantener el valor actual):")
-                nuevo_nombre = vd.validatetext(f"Nuevo nombre ({producto_encontrado['Nombre']}): ") or producto_encontrado['Nombre']
+                nuevo_nombre = vd.validatetext(f"Nuevo nombre ({producto_encontrado['Name']}): ") or producto_encontrado['Name']
                 nuevo_ml = vd.validateInt(f"Nueva cantidad de ml ({producto_encontrado['ml']}): ") or producto_encontrado['ml']
-                nuevo_costo = vd.validateInt(f"Nuevo costo ({producto_encontrado['Costo']}): ") or producto_encontrado['Costo']
-                nuevo_precio_venta = vd.validateInt(f"Nuevo precio de venta ({producto_encontrado['precio de venta']}): ") or producto_encontrado['precio de venta']
+                nuevo_costo = vd.validateInt(f"Nuevo costo ({producto_encontrado['Cost']}): ") or producto_encontrado['Cost']
+                nuevo_precio_venta = vd.validateInt(f"Nuevo precio de venta ({producto_encontrado['Price']}): ") or producto_encontrado['Price']
 
                 
-                producto_encontrado["Nombre"] = nuevo_nombre
+                producto_encontrado["Name"] = nuevo_nombre
                 producto_encontrado["ml"] = int(nuevo_ml)
-                producto_encontrado["Costo"] = int(nuevo_costo)
-                producto_encontrado["precio de venta"] = int(nuevo_precio_venta)
+                producto_encontrado["Cost"] = int(nuevo_costo)
+                producto_encontrado["Price"] = int(nuevo_precio_venta)
 
              
                 data[categoria_encontrada][id_buscado] = producto_encontrado
@@ -78,12 +78,12 @@ def editMenu():
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
                     return editMenu()
-                if not data["Vino"]:
+                if not data["Wine"]:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
                     return editMenu()
-                for id, info in data["Vino"].items():
-                    print(f"ID: {id} - Nombre: {info['Nombre']}")
+                for id, info in data["Wine"].items():
+                    print(f"ID: {id} - Nombre: {info['Name']}")
 
                 id_buscado = input("Ingrese el ID del producto que desea editar:")
                 encontrado = False
@@ -110,17 +110,17 @@ def editMenu():
 
                
                 print("\nIngrese los nuevos datos (deje en blanco para mantener el valor actual):")
-                nuevo_nombre = vd.validatetext(f"Nuevo nombre ({producto_encontrado['Nombre']}): ") or producto_encontrado['Nombre']
+                nuevo_nombre = vd.validatetext(f"Nuevo nombre ({producto_encontrado['Name']}): ") or producto_encontrado['Name']
                 nuevo_ml = vd.validateInt(f"Nueva cantidad de ml ({producto_encontrado['ml']}): ") or producto_encontrado['ml']
-                nuevo_costo = vd.validateInt(f"Nuevo costo ({producto_encontrado['Costo']}): ") or producto_encontrado['Costo']
-                nuevo_precio_venta = vd.validateInt(f"Nuevo precio de venta ({producto_encontrado['precio de venta']}): ") or producto_encontrado['precio de venta']
+                nuevo_costo = vd.validateInt(f"Nuevo costo ({producto_encontrado['Cost']}): ") or producto_encontrado['Cost']
+                nuevo_precio_venta = vd.validateInt(f"Nuevo precio de venta ({producto_encontrado['Price']}): ") or producto_encontrado['Price']
 
 
                 
-                producto_encontrado["Nombre"] = nuevo_nombre
+                producto_encontrado["Name"] = nuevo_nombre
                 producto_encontrado["ml"] = int(nuevo_ml)
-                producto_encontrado["Costo"] = int(nuevo_costo)
-                producto_encontrado["precio de venta"] = int(nuevo_precio_venta)
+                producto_encontrado["Cost"] = int(nuevo_costo)
+                producto_encontrado["Price"] = int(nuevo_precio_venta)
 
              
                 data[categoria_encontrada][id_buscado] = producto_encontrado
@@ -142,7 +142,7 @@ def editMenu():
                     sc.pausar_pantalla()
                     return editMenu()
                 for id, info in data["Liquors"].items():
-                    print(f"ID: {id} - Nombre: {info['Nombre']}")
+                    print(f"ID: {id} - Nombre: {info['Name']}")
 
                 id_buscado = input("Ingrese el ID del producto que desea editar:")
                 encontrado = False
@@ -169,17 +169,17 @@ def editMenu():
 
                
                 print("\nIngrese los nuevos datos (deje en blanco para mantener el valor actual):")
-                nuevo_nombre = vd.validatetext(f"Nuevo nombre ({producto_encontrado['Nombre']}): ") or producto_encontrado['Nombre']
+                nuevo_nombre = vd.validatetext(f"Nuevo nombre ({producto_encontrado['Name']}): ") or producto_encontrado['Name']
                 nuevo_ml = vd.validateInt(f"Nueva cantidad de ml ({producto_encontrado['ml']}): ") or producto_encontrado['ml']
-                nuevo_costo = vd.validateInt(f"Nuevo costo ({producto_encontrado['Costo']}): ") or producto_encontrado['Costo']
-                nuevo_precio_venta = vd.validateInt(f"Nuevo precio de venta ({producto_encontrado['precio de venta']}): ") or producto_encontrado['precio de venta']
+                nuevo_costo = vd.validateInt(f"Nuevo costo ({producto_encontrado['Cost']}): ") or producto_encontrado['Cost']
+                nuevo_precio_venta = vd.validateInt(f"Nuevo precio de venta ({producto_encontrado['Price']}): ") or producto_encontrado['Price']
 
 
                 
-                producto_encontrado["Nombre"] = nuevo_nombre
+                producto_encontrado["Name"] = nuevo_nombre
                 producto_encontrado["ml"] = int(nuevo_ml)
-                producto_encontrado["Costo"] = int(nuevo_costo)
-                producto_encontrado["precio de venta"] = int(nuevo_precio_venta)
+                producto_encontrado["Cost"] = int(nuevo_costo)
+                producto_encontrado["Price"] = int(nuevo_precio_venta)
 
              
                 data[categoria_encontrada][id_buscado] = producto_encontrado
