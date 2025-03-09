@@ -67,3 +67,21 @@ def printTable(category: str, product: Dict, product_id: int) -> None:
     
     print(f"\n📋 ÚLTIMA MODIFICACIÓN EN {category.upper()}:")
     print(tabulate(table, headers=headers, tablefmt="grid"))
+
+def printFilteredTable(category: str, products: Dict[int, Dict]) -> None:
+    """
+    Imprime una tabla con los productos filtrados.
+    """
+    if not products:
+        print(f"\n⚠️ No se encontraron productos en {category}.")
+        return
+
+    headers = ["ID", "Name", "ml", "Cost", "Price"]
+    table = [
+        [id_producto, detalles.get("Name", "N/A"), detalles.get("ml", "N/A"), 
+         detalles.get("Cost", "N/A"), detalles.get("Price", "N/A")]
+        for id_producto, detalles in products.items()
+    ]
+
+    print(f"\n📋 PRODUCTOS FILTRADOS EN {category.upper()}:")
+    print(tabulate(table, headers=headers, tablefmt="grid"))
