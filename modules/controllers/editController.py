@@ -15,7 +15,7 @@ def editMenu():
         case "1":
             while True:
                 sc.limpiar_pantalla()
-                if not data["Beer"] or not data:
+                if not data.get("Beer") or not data:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
                     return editMenu()
@@ -70,7 +70,7 @@ def editMenu():
         case "2":
             while True:
                 sc.limpiar_pantalla()
-                if not data["Wine"] or not data:
+                if not data.get("Wine") or not data:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
                     return editMenu()
@@ -125,7 +125,7 @@ def editMenu():
         case "3":
             while True:
                 sc.limpiar_pantalla()
-                if not data["Liquors"] or not data:
+                if not data.get("Liquors") or not data:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
                     return editMenu()

@@ -21,6 +21,7 @@ def seeMenu():
 
             if not data:
                 print("No hay productos para mostrar.")
+                sc.pausar_pantalla()
                 return seeMenu()
 
             productos_tabla = []
@@ -46,6 +47,7 @@ def seeMenu():
             sc.limpiar_pantalla()
             if not data:
                 print("No hay productos para mostrar.")
+                sc.pausar_pantalla()
                 return
 
             productos_tabla = []
