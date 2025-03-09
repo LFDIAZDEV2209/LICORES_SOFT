@@ -13,181 +13,170 @@ def editMenu():
     option = input("= ")
     match option:
         case "1":
+            while True:
                 sc.limpiar_pantalla()
-                print(msg.EDIT_MENU)
-                data = cf.readJson()  
-                if not data:
+                if not data["Beer"] or not data:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
                     return editMenu()
-                if not data["Beer"]:
-                    print("No hay datos para editar.")
-                    sc.pausar_pantalla()
-                    return editMenu()
+
                 for id, info in data["Beer"].items():
                     print(f"ID: {id} - Nombre: {info['Name']}")
 
-                id_buscado = input("Ingrese el ID del producto que desea editar:")
-                encontrado = False
-                categoria_encontrada = None
-                producto_encontrado = None
+                id = input("Ingrese el ID del producto que desea editar:")
 
-                
-                for categoria in data:
-                    if categoria in data:  
-                        if id_buscado in data[categoria]:  
-                            producto_encontrado = data[categoria][id_buscado]
-                            categoria_encontrada = categoria
-                            encontrado = True
-                            break
+                if str(id) in data["Beer"]:
+                    cerveza_actual = data["Beer"][str(id)] 
+                    print("\n🔹 Presiona ENTER para mantener el valor actual.")
 
-                if not encontrado:
-                    print(f"No se encontró ningún producto con el ID {id_buscado}.")
+                    nomBeer = input(f"Ingrese el nuevo nombre de la cerveza ({cerveza_actual['Name']}): ").strip() or cerveza_actual["Name"]
+                    ml = input(f"Ingrese los nuevos ml ({cerveza_actual['ml']}): ").strip()
+                    costBeer = input(f"Nuevo costo ({cerveza_actual['Cost']}): ").strip()
+                    priceBeer = input(f"Nuevo precio de venta ({cerveza_actual['Price']}): ").strip()
+
+                    ml = int(ml) if ml.isdigit() else cerveza_actual["ml"]
+                    costBeer = int(costBeer) if costBeer.isdigit() else cerveza_actual["Cost"]
+                    priceBeer = int(priceBeer) if priceBeer.isdigit() else cerveza_actual["Price"]
+
+                    CERVEZA = {
+                        id: {
+                            "Name": nomBeer,
+                            "ml": ml,
+                            "Cost": costBeer,
+                            "Price": priceBeer
+                        }
+                    }
+
+                    if not cf.updateJson(CERVEZA, ["Beer"]):
+                        print("Cerveza editada exitosamente ✅")
+                        cf.printTable("Beer", CERVEZA, id)
+                    else:
+                        print("No se pudo editar la cerveza ❌")
+
+                    while True:
+                        opcion = input("\n¿Desea editar otra cerveza? (si/no): ").strip().lower()
+                        if opcion == "si":
+                            break  
+                        elif opcion == "no":
+                            sc.pausar_pantalla()
+                            return editMenu()  
+                        else:
+                            print("⚠️ Respuesta inválida. Por favor, ingrese 'si' o 'no'.")
+
+                else:
+                    print(f"⚠️ No se encontró una cerveza con el ID '{id}'.")
                     sc.pausar_pantalla()
-                    return
-
-              
-                print(f"Detalles actuales del producto (ID: {id_buscado}):")
-                print(json.dumps(producto_encontrado, indent=4))
-
-               
-                print("\nIngrese los nuevos datos (deje en blanco para mantener el valor actual):")
-                nuevo_nombre = vd.validatetext(f"Nuevo nombre ({producto_encontrado['Name']}): ") or producto_encontrado['Name']
-                nuevo_ml = vd.validateInt(f"Nueva cantidad de ml ({producto_encontrado['ml']}): ") or producto_encontrado['ml']
-                nuevo_costo = vd.validateInt(f"Nuevo costo ({producto_encontrado['Cost']}): ") or producto_encontrado['Cost']
-                nuevo_precio_venta = vd.validateInt(f"Nuevo precio de venta ({producto_encontrado['Price']}): ") or producto_encontrado['Price']
-
-                
-                producto_encontrado["Name"] = nuevo_nombre
-                producto_encontrado["ml"] = int(nuevo_ml)
-                producto_encontrado["Cost"] = int(nuevo_costo)
-                producto_encontrado["Price"] = int(nuevo_precio_venta)
-
-             
-                data[categoria_encontrada][id_buscado] = producto_encontrado
-                cf.updateJson(data)  
-
-                print("\n¡Producto actualizado con éxito!")
-                sc.pausar_pantalla()
-                return editMenu()
+                    return editMenu()
         case "2":
+            while True:
                 sc.limpiar_pantalla()
-                print(msg.EDIT_MENU)
-                data = cf.readJson()  
-                if not data:
+                if not data["Wine"] or not data:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
                     return editMenu()
-                if not data["Wine"]:
-                    print("No hay datos para editar.")
-                    sc.pausar_pantalla()
-                    return editMenu()
+
                 for id, info in data["Wine"].items():
                     print(f"ID: {id} - Nombre: {info['Name']}")
 
-                id_buscado = input("Ingrese el ID del producto que desea editar:")
-                encontrado = False
-                categoria_encontrada = None
-                producto_encontrado = None
+                id = input("Ingrese el ID del producto que desea editar:")
 
-                
-                for categoria in data:
-                    if categoria in data:  
-                        if id_buscado in data[categoria]:  
-                            producto_encontrado = data[categoria][id_buscado]
-                            categoria_encontrada = categoria
-                            encontrado = True
-                            break
+                if str(id) in data["Wine"]:
+                    wine_actual = data["Wine"][str(id)] 
+                    print("\n🔹 Presiona ENTER para mantener el valor actual.")
 
-                if not encontrado:
-                    print(f"No se encontró ningún producto con el ID {id_buscado}.")
+                    nomWine = input(f"Ingrese el nuevo nombre de la cerveza ({wine_actual['Name']}): ").strip() or wine_actual["Name"]
+                    ml = input(f"Ingrese los nuevos ml ({wine_actual['ml']}): ").strip()
+                    costWine = input(f"Nuevo costo ({wine_actual['Cost']}): ").strip()
+                    priceWine = input(f"Nuevo precio de venta ({wine_actual['Price']}): ").strip()
+
+                    ml = int(ml) if ml.isdigit() else wine_actual["ml"]
+                    costWine = int(costWine) if costWine.isdigit() else wine_actual["Cost"]
+                    priceWine = int(priceWine) if priceWine.isdigit() else wine_actual["Price"]
+
+                    WINE = {
+                        id: {
+                            "Name": nomWine,
+                            "ml": ml,
+                            "Cost": costWine,
+                            "Price": priceWine
+                        }
+                    }
+
+                    if not cf.updateJson(WINE, ["Wine"]):
+                        print("Cerveza editada exitosamente ✅")
+                        cf.printTable("Wine", WINE, id)
+                    else:
+                        print("No se pudo editar la cerveza ❌")
+
+                    while True:
+                        opcion = input("\n¿Desea editar otra cerveza? (si/no): ").strip().lower()
+                        if opcion == "si":
+                            break  
+                        elif opcion == "no":
+                            sc.pausar_pantalla()
+                            return editMenu()  
+                        else:
+                            print("⚠️ Respuesta inválida. Por favor, ingrese 'si' o 'no'.")
+
+                else:
+                    print(f"⚠️ No se encontró una cerveza con el ID '{id}'.")
                     sc.pausar_pantalla()
-                    return
-
-              
-                print(f"Detalles actuales del producto (ID: {id_buscado}):")
-                print(json.dumps(producto_encontrado, indent=4))
-
-               
-                print("\nIngrese los nuevos datos (deje en blanco para mantener el valor actual):")
-                nuevo_nombre = vd.validatetext(f"Nuevo nombre ({producto_encontrado['Name']}): ") or producto_encontrado['Name']
-                nuevo_ml = vd.validateInt(f"Nueva cantidad de ml ({producto_encontrado['ml']}): ") or producto_encontrado['ml']
-                nuevo_costo = vd.validateInt(f"Nuevo costo ({producto_encontrado['Cost']}): ") or producto_encontrado['Cost']
-                nuevo_precio_venta = vd.validateInt(f"Nuevo precio de venta ({producto_encontrado['Price']}): ") or producto_encontrado['Price']
-
-
-                
-                producto_encontrado["Name"] = nuevo_nombre
-                producto_encontrado["ml"] = int(nuevo_ml)
-                producto_encontrado["Cost"] = int(nuevo_costo)
-                producto_encontrado["Price"] = int(nuevo_precio_venta)
-
-             
-                data[categoria_encontrada][id_buscado] = producto_encontrado
-                cf.updateJson(data)  
-
-                print("\n¡Producto actualizado con éxito!")
-                sc.pausar_pantalla()
-                return editMenu()
+                    return editMenu()
         case "3":
+            while True:
                 sc.limpiar_pantalla()
-                print(msg.EDIT_MENU)
-                data = cf.readJson()  
-                if not data:
+                if not data["Liquors"] or not data:
                     print("No hay datos para editar.")
                     sc.pausar_pantalla()
                     return editMenu()
-                if not data["Liquors"]:
-                    print("No hay datos para editar.")
-                    sc.pausar_pantalla()
-                    return editMenu()
+
                 for id, info in data["Liquors"].items():
                     print(f"ID: {id} - Nombre: {info['Name']}")
 
-                id_buscado = input("Ingrese el ID del producto que desea editar:")
-                encontrado = False
-                categoria_encontrada = None
-                producto_encontrado = None
+                id = input("Ingrese el ID del producto que desea editar:")
 
-                
-                for categoria in data:
-                    if categoria in data:  
-                        if id_buscado in data[categoria]:  
-                            producto_encontrado = data[categoria][id_buscado]
-                            categoria_encontrada = categoria
-                            encontrado = True
-                            break
+                if str(id) in data["Liquors"]:
+                    liquor_actual = data["Liquors"][str(id)] 
+                    print("\n🔹 Presiona ENTER para mantener el valor actual.")
 
-                if not encontrado:
-                    print(f"No se encontró ningún producto con el ID {id_buscado}.")
+                    nomLiquors = input(f"Ingrese el nuevo nombre de la cerveza ({liquor_actual['Name']}): ").strip() or liquor_actual["Name"]
+                    ml = input(f"Ingrese los nuevos ml ({liquor_actual['ml']}): ").strip()
+                    costLiquors = input(f"Nuevo costo ({liquor_actual['Cost']}): ").strip()
+                    priceLiquors = input(f"Nuevo precio de venta ({liquor_actual['Price']}): ").strip()
+
+                    ml = int(ml) if ml.isdigit() else liquor_actual["ml"]
+                    costLiquors = int(costLiquors) if costLiquors.isdigit() else liquor_actual["Cost"]
+                    priceLiquors = int(priceLiquors) if priceLiquors.isdigit() else liquor_actual["Price"]
+
+                    LIQUORS = {
+                        id: {
+                            "Name": nomLiquors,
+                            "ml": ml,
+                            "Cost": costLiquors,
+                            "Price": priceLiquors
+                        }
+                    }
+
+                    if not cf.updateJson(LIQUORS, ["Liquors"]):
+                        print("Cerveza editada exitosamente ✅")
+                        cf.printTable("Liquors", LIQUORS, id)
+                    else:
+                        print("No se pudo editar la cerveza ❌")
+
+                    while True:
+                        opcion = input("\n¿Desea editar otra cerveza? (si/no): ").strip().lower()
+                        if opcion == "si":
+                            break  
+                        elif opcion == "no":
+                            sc.pausar_pantalla()
+                            return editMenu()  
+                        else:
+                            print("⚠️ Respuesta inválida. Por favor, ingrese 'si' o 'no'.")
+
+                else:
+                    print(f"⚠️ No se encontró una cerveza con el ID '{id}'.")
                     sc.pausar_pantalla()
-                    return
-
-              
-                print(f"Detalles actuales del producto (ID: {id_buscado}):")
-                print(json.dumps(producto_encontrado, indent=4))
-
-               
-                print("\nIngrese los nuevos datos (deje en blanco para mantener el valor actual):")
-                nuevo_nombre = vd.validatetext(f"Nuevo nombre ({producto_encontrado['Name']}): ") or producto_encontrado['Name']
-                nuevo_ml = vd.validateInt(f"Nueva cantidad de ml ({producto_encontrado['ml']}): ") or producto_encontrado['ml']
-                nuevo_costo = vd.validateInt(f"Nuevo costo ({producto_encontrado['Cost']}): ") or producto_encontrado['Cost']
-                nuevo_precio_venta = vd.validateInt(f"Nuevo precio de venta ({producto_encontrado['Price']}): ") or producto_encontrado['Price']
-
-
-                
-                producto_encontrado["Name"] = nuevo_nombre
-                producto_encontrado["ml"] = int(nuevo_ml)
-                producto_encontrado["Cost"] = int(nuevo_costo)
-                producto_encontrado["Price"] = int(nuevo_precio_venta)
-
-             
-                data[categoria_encontrada][id_buscado] = producto_encontrado
-                cf.updateJson(data)  
-
-                print("\n¡Producto actualizado con éxito!")
-                sc.pausar_pantalla()
-                return editMenu()
+                    return editMenu()
         case "4":
             pass
         case _:
