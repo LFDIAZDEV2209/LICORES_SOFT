@@ -5,6 +5,7 @@ from typing import Dict, List, Optional
 import modules.msg as msg
 import json
 from config import DB_FILE
+from tabulate import tabulate
 
 
 
@@ -17,126 +18,75 @@ def seeMenu():
     match option:
         case "1":
             sc.limpiar_pantalla()
+
             if not data:
                 print("No hay productos para mostrar.")
-                sc.pausar_pantalla()
-                return seeMenu()
-            if (not data["Beer"])or(not data["Vino"]) or (not data["Liquors"]):
-                print("No hay productos para mostrar.")
-                sc.pausar_pantalla()
                 return seeMenu()
 
-            print("=== TODOS LOS PRODUCTOS ===")
+            productos_tabla = []
             for categoria, productos in data.items():
-                print(f"\n--- {categoria} ---")
                 for id_producto, detalles in productos.items():
-                    print(f"ID: {id_producto}")
-                    print(json.dumps(detalles, indent=4))
+                    productos_tabla.append([
+                        id_producto,
+                        categoria,
+                        detalles.get("Name", "N/A"),
+                        detalles.get("ml", "N/A"),
+                        detalles.get("Cost", "N/A"),
+                        detalles.get("Price", "N/A")
+                    ])
+
+            if productos_tabla:
+                print("=== TODOS LOS PRODUCTOS ===")
+                print(tabulate(productos_tabla, headers=["ID", "Categoría", "Nombre", "ML", "Costo", "Precio"], tablefmt="grid"))
+            else:
+                print("No hay productos disponibles.")
             sc.pausar_pantalla()
+            return seeMenu()
         case "2":
             sc.limpiar_pantalla()
             if not data:
-                print("No hay datos para mostrar.")
-                sc.pausar_pantalla()
-                return seeMenu()
-            if (not data["Beer"])or(not data["Vino"]) or (not data["Liquors"]):
                 print("No hay productos para mostrar.")
-                sc.pausar_pantalla()
-                return seeMenu()
+                return
 
-            todos_los_productos = []
+            productos_tabla = []
             for categoria, productos in data.items():
                 for id_producto, detalles in productos.items():
-                    detalles["ID"] = id_producto  
-                    detalles["Categoria"] = categoria  
-                    todos_los_productos.append(detalles)
+                    productos_tabla.append([
+                        id_producto,
+                        categoria,
+                        detalles.get("Name", "N/A"),
+                        detalles.get("ml", "N/A"),
+                        detalles.get("Cost", "N/A"),
+                        detalles.get("Price", "N/A")
+                    ])
 
-           
-            todos_los_productos.sort(key=lambda x: x["Nombre"])
+            productos_tabla.sort(key=lambda x: x[2])  
 
-            print("=== PRODUCTOS EN ORDEN ALFABÉTICO ===")
-            for producto in todos_los_productos:
-                print(f"\nID: {producto['ID']} | Categoría: {producto['Categoria']}")
-                print(json.dumps({k: v for k, v in producto.items() if k not in ["ID", "Categoria"]}, indent=4))
+            if productos_tabla:
+                print("=== PRODUCTOS EN ORDEN ALFABÉTICO ===")
+                print(tabulate(productos_tabla, headers=["ID", "Categoría", "Nombre", "ML", "Costo", "Precio"], tablefmt="grid"))
+            else:
+                print("No hay productos disponibles.")
             sc.pausar_pantalla()
             return seeMenu()
         case "3":
             sc.limpiar_pantalla()
-            data = cf.readJson()  
-            if not data:
-                print("No hay datos para mostrar.")
-                sc.pausar_pantalla()
-                return seeMenu()
-            if not data["Beer"]:
-                print("No hay datos para mostrar.")
-                sc.pausar_pantalla()
-                return seeMenu()
-            for categoria in ["Beer"]:
-                if categoria in data:  
-                    print(f"Producto encontrado en la categoría {categoria}:")
-                    for id_producto, detalles in data[categoria].items():
-                        
-                            
-                            print(json.dumps(detalles, indent=4))
-                            encontrado = True
-                            
-
-            if not encontrado:
-                print(f"No se encontró ningún producto.")
-
+            cf.show_products_by_category(data, "Beer")
             sc.pausar_pantalla()
             return seeMenu()
         case "4":
             sc.limpiar_pantalla()
-            data = cf.readJson()  
-            if not data:
-                print("No hay datos para mostrar.")
-                sc.pausar_pantalla()
-                return seeMenu()
-            if not data["Vino"]:
-                print("No hay datos para mostrar.")
-                sc.pausar_pantalla()
-                return seeMenu()
-            for categoria in ["Vino"]:
-                if categoria in data:  
-                    print(f"Producto encontrado en la categoría {categoria}:")
-                    for id_producto, detalles in data[categoria].items():
-                        
-                            
-                            print(json.dumps(detalles, indent=4))
-                            encontrado = True
-            if not encontrado:
-                print(f"No se encontró ningún producto.")
-
+            cf.show_products_by_category(data, "Wine")
             sc.pausar_pantalla()
             return seeMenu()
         case "5":
             sc.limpiar_pantalla()
-            data = cf.readJson()  
-            if not data:
-                print("No hay datos para mostrar.")
-                sc.pausar_pantalla()
-                return seeMenu()
-            if not data["Liquors"]:
-                print("No hay datos para mostrar.")
-                sc.pausar_pantalla()
-                return seeMenu()
-            for categoria in ["Liquors"]:
-                if categoria in data:  
-                    print(f"Producto encontrado en la categoría {categoria}:")
-                    for id_producto, detalles in data[categoria].items():
-                        
-                            
-                            print(json.dumps(detalles, indent=4))
-                            encontrado = True
-            if not encontrado:
-                print(f"No se encontró ningún producto.")
-
+            cf.show_products_by_category(data, "Liquors")
             sc.pausar_pantalla()
             return seeMenu()
         case "6":
             pass
         case _:
-            print("Esta opcion no esta")
+            print("Opcion no disponible, intente nuevamente")
             sc.pausar_pantalla()
             return seeMenu()

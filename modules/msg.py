@@ -6,7 +6,7 @@ MAIN_MENU="""
     2. ❌ Eliminar producto
     3. ✏️ Editar producto
     4. 🔍 Buscar producto
-    5. 📄 Ver todos los productos
+    5. 📄 Ver productos
     6. 🚪 Salir
 ====================================
 Selecciona una opcion(1-6)

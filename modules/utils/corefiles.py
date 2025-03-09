@@ -60,7 +60,6 @@ def initializeJson(initialStructure:Dict)->None:
         writeJson(currentData)
 
 def printTable(category: str, product: Dict, product_id: int) -> None:
-    # Mostramos la tabla solo con el producto recién agregado
     table = [[product_id, product[product_id].get("Name", "N/A"), product[product_id].get("ml", "N/A"), 
               product[product_id].get("Cost", "N/A"), product[product_id].get("Price", "N/A")]]
     headers = ["ID", "Name", "ml", "Cost", "Price"]
@@ -85,3 +84,22 @@ def printFilteredTable(category: str, products: Dict[int, Dict]) -> None:
 
     print(f"\n📋 PRODUCTOS FILTRADOS EN {category.upper()}:")
     print(tabulate(table, headers=headers, tablefmt="grid"))
+
+def show_products_by_category(data, category):
+    """ Muestra los productos de una categoría específica en tabla. """
+    if not data or category not in data or not data[category]:
+        print(f"No hay productos en la categoría {category}.")
+        return
+
+    productos_tabla = []
+    for id_producto, detalles in data[category].items():
+        productos_tabla.append([
+            id_producto,
+            detalles.get("Name", "N/A"),
+            detalles.get("ml", "N/A"),
+            detalles.get("Cost", "N/A"),
+            detalles.get("Price", "N/A")
+        ])
+
+    print(f"=== PRODUCTOS EN CATEGORÍA {category.upper()} ===")
+    print(tabulate(productos_tabla, headers=["ID", "Nombre", "ML", "Costo", "Precio"], tablefmt="grid"))
